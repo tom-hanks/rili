@@ -1,0 +1,39 @@
+.table {
+    width: 420px;
+    .clearfix {
+        zoom: 1;
+
+        &:after {
+            display: block;
+            visibility: hidden;
+            clear: both;
+            height: 0;
+            content: ".";
+        }
+    }
+
+    li {
+        list-style-type: none
+    }
+    .ul_th{
+        .li{
+            background: green;
+            color: #ffff;
+        }
+    }
+    ul {
+        .li {
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            background: pink;
+            float: left;
+            text-align: center;
+            flex-direction: row-reverse
+        }
+        .hui{
+            background: #ccc;
+
+        }
+    }
+}
