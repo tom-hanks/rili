@@ -77,7 +77,8 @@ export default {
             upM.push({day:new Date(this.current.year, this.current.month<2?this.current.month:(this.current.month -1 ), 0).getDate()-i,bg:'hui'})//new Date(this.current.year, this.current.month<2?this.current.month:(this.current.month -1 ), 0).getDate()-i
         }
         // 当前月
-        let arr = new Date(this.current.year,this.current.month,0).getDate();
+        let arr =this.getDays('0','getDate')
+          console.log('当月第一天====',this.getDays('0','getDate'))
          for (let i = 0; i < arr; i++) {
           centerM.push({day:i+1,bg:'liang'});//{day:i+1,bg:'liang'}
         }
@@ -99,8 +100,14 @@ export default {
           console.log(`下个月=${this.current.month>11?this.current.month :(this.current.month+ 1)}号===`,  downM);
     },
     //获取指定日期的是周几
-    getDays(hao){
-       return new Date(`${this.current.year}/${this.current.month}/${hao}`).getDay();
+    getDays(hao,fun='getDay'){
+        switch (fun){
+          case 'getDate'://获取当月有多少天
+            return new Date(this.current.year,this.current.month,hao)[fun]();
+          break;
+          default:
+             return new Date(`${this.current.year}/${this.current.month}/${hao}`)[fun]()
+        }
     },
     setCurrent(d = new Date(), current = {}) {
       current.year = d.getFullYear();
